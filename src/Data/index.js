@@ -1,4 +1,19 @@
-  export const skillList = [
+import React, {useState,useEffect} from 'react'
+
+export const useEffectApi = ()=>{
+  const [users, setUsers] = useState([]);
+  const getUsers = async () => {
+    const response = await fetch('https://api.github.com/users');
+    setUsers(await response.json());
+  }
+  useEffect(()=>{
+    getUsers();
+  },[]
+  );
+  return users;
+}
+
+ export const skillList = [
     { id: 1, checked: false, label: 'Algorithm' },
     { id: 2, checked: false, label: 'Data Structure' },
     { id: 3, checked: false, label: 'Basic Language' },

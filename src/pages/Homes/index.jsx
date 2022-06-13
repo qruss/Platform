@@ -3,10 +3,11 @@ import FilterPanel from '../../components/Home/FilterPanel';
 import SearchBar from '../../components/Home/SearchBar';
 import EmptyView from '../../components/common/EmptyView';
 import List from '../../components/Home/List';
-import  {dataList,skillList,languageList}  from '../../Data/index';
+import  {useEffectApi,dataList,skillList,languageList}  from '../../Data/index';
 import './styles.css';
 
 const Home = () => {
+  console.log(useEffectApi());
   const [skills, setskills] = useState(skillList);
   const [languages, setlanguages] = useState(languageList);
 
