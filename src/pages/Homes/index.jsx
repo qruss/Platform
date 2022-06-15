@@ -1,96 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import FilterPanel from '../../components/Home/FilterPanel';
-import SearchBar from '../../components/Home/SearchBar';
-import EmptyView from '../../components/common/EmptyView';
-import List from '../../components/Home/List';
-import  {useEffectApi,dataList,skillList,languageList}  from '../../Data/index';
-import './styles.css';
+import React, { useEffect, useState } from "react";
+import { Pagination, PaginationItem } from "@mui/material";
+import FilterPanel from "../../components/Home/FilterPanel";
+import SearchBar from "../../components/Home/SearchBar";
+import List from "../../components/Home/List";
+import { dataList } from "../../Data/index";
+import "./styles.css";
 
 const Home = () => {
-  console.log(useEffectApi());
-  const [skills, setskills] = useState(skillList);
-  const [languages, setlanguages] = useState(languageList);
+  const [masterData, setmasterData] = useState({
+    Technology: [],
+    Level: [],
+    Type: [],
+    Recommended_Time: [],
+    Tags: [],
+    Languages: [],
+  });
 
-  const [list, setList] = useState(dataList);
-  const [resultsFound, setResultsFound] = useState(true);
-  const [searchInput, setSearchInput] = useState('');
+  useEffect(() => {
+    fetch("http://localhost:5000/master_api/ ")
+      .then((response) => response.json())
+      .then((data) => setmasterData(data));
+  }, []);
 
-  const handleChangeChecked1 = (id) => {
-    const skillsStateList = [...skills];
-    const changeCheckedskills = skillsStateList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
-    );
-    
-    setskills(changeCheckedskills);
-  };
-
-  const handleChangeChecked2 = (id) => {
-    const languagesStateList = languages;
-    const changeCheckedlanguages = languagesStateList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
-    );
-    setlanguages(changeCheckedlanguages);
-  };
+  const [list, setlist] = useState(dataList);
+  const [searchInput, setSearchInput] = useState("");
+  const [filter, setfilter] = useState({
+    Technology: [],
+    Level: [],
+    Type: [],
+    Recommended_Time: [0, 5000],
+    Tags: [],
+    Languages: [],
+    Search: "",
+    page: 1,
+  });
 
   useEffect(() => {
     const applyFilters = () => {
-      let updatedList = dataList;
-      const skillChecked = skills
-        .filter((item) => item.checked)
-        .map((item) => item.label);
-      
-      if (skillChecked.length > 0 ) {
-         console.log(skillChecked);
-        updatedList = updatedList.filter((item) =>
-          skillChecked.includes(item.skill)
-        );
-      }
-      const languageChecked = languages
-        .filter((item) => item.checked)
-        .map((item) => item.label.toLowerCase());
-        
-      if (languageChecked.length > 0) {
-        updatedList = updatedList.filter((item) =>
-        languageChecked.includes((item.language.toLowerCase()))
-        );
-      }
-      
-      if (searchInput) {
-        updatedList = updatedList.filter(
-          (item) =>
-            item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-            -1
-        );
-      }
-      setList(updatedList);
-      !updatedList.length ? setResultsFound(false) : setResultsFound(true);
-      
+      const temp_filter = { ...filter };
+      Object.keys(temp_filter).map(
+        (key) =>
+          (temp_filter[key] =
+            key === "Search" || key === "Recommended_Time" || key === "page"
+              ? temp_filter[key]
+              : masterData[key]
+                  .filter((item) => item.selected)
+                  .map((item) => item.label))
+      );
+      temp_filter["Search"] = searchInput;
+
+      setfilter(temp_filter);
     };
     applyFilters();
-    
-  }, [ skills, languages, searchInput]);
+  }, [masterData, searchInput]);
 
+  const handlePageChange = (event, value) => {
+    const temp_filter = { ...filter };
+    temp_filter.page = value;
+    setfilter(temp_filter);
+  };
+  const handleRecommended_Time = (event, value) => {
+    const temp_filter = { ...filter };
+    temp_filter["Recommended_Time"] = value;
+    setfilter(temp_filter);
+    console.log(temp_filter);
+  };
 
+  const handleChange = (category, id) => {
+    const temp_masterData1 = { ...masterData };
+
+    temp_masterData1[category] = temp_masterData1[category].map((item) =>
+      item.id === id ? { ...item, selected: !item.selected } : item
+    );
+    setmasterData(temp_masterData1);
+  };
 
   return (
-    <div className='home'>
-      <div className='home_panelList-wrap'>
-        <div className='home_panel-wrap'>
+    <div className="home">
+      <div className="home_panelList-wrap">
+        <div className="home_panel-wrap">
           <FilterPanel
-            skills={skills}
-            changeChecked1={handleChangeChecked1}
-            languages={languages}
-            changeChecked2={handleChangeChecked2}
+            masterData={masterData}
+            changeChecked={handleChange}
+            value={filter["Recommended_Time"]}
+            handleRecommended_Time={handleRecommended_Time}
           />
         </div>
-        <div className='home_list-wrap'>
-        <SearchBar value={searchInput}
-        changeInput={(e) => setSearchInput(e.target.value)}/>
-        {resultsFound ? <List list={list} /> : <EmptyView />}
+        <div className="home_list-wrap">
+          <SearchBar
+            value={searchInput}
+            changeInput={(e) => setSearchInput(e.target.value)}
+          />
+          <List list={list} />
+          <div className="Pagination">
+            <Pagination
+              count={25}
+              variant="outlined"
+              color="secondary"
+              size="large"
+              page={filter["page"]}
+              onChange={handlePageChange}
+            />
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

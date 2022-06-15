@@ -1,7 +1,6 @@
 .list-wrap {
-    display: flex;
-    flex-direction: column;
-    padding: 0rem 0.5rem;
-    grid-gap: 0.8rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 0.5rem;
+  grid-gap: 0.8rem;
+}
