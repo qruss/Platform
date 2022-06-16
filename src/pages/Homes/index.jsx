@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Pagination, PaginationItem } from "@mui/material";
+import { Pagination } from "@mui/material";
 import FilterPanel from "../../components/Home/FilterPanel";
 import SearchBar from "../../components/Home/SearchBar";
 import List from "../../components/Home/List";
+import Tags from "../../components/Home/Tags/index";
 import { dataList } from "../../Data/index";
 import "./styles.css";
 
@@ -27,8 +28,8 @@ const Home = () => {
   const [filter, setfilter] = useState({
     Technology: [],
     Level: [],
-    Type: [],
-    Recommended_Time: [0, 5000],
+    Type: ["code"],
+    Recommended_Time: [0, 480],
     Tags: [],
     Languages: [],
     Search: "",
@@ -68,10 +69,15 @@ const Home = () => {
 
   const handleChange = (category, id) => {
     const temp_masterData1 = { ...masterData };
-
-    temp_masterData1[category] = temp_masterData1[category].map((item) =>
-      item.id === id ? { ...item, selected: !item.selected } : item
-    );
+    category === "Type"
+      ? (temp_masterData1[category] = temp_masterData1[category].map((item) =>
+          item.id === id
+            ? { ...item, selected: true }
+            : { ...item, selected: false }
+        ))
+      : (temp_masterData1[category] = temp_masterData1[category].map((item) =>
+          item.id === id ? { ...item, selected: !item.selected } : item
+        ));
     setmasterData(temp_masterData1);
   };
 
@@ -91,6 +97,7 @@ const Home = () => {
             value={searchInput}
             changeInput={(e) => setSearchInput(e.target.value)}
           />
+          <Tags filter={filter} />
           <List list={list} />
           <div className="Pagination">
             <Pagination

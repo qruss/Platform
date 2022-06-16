@@ -104,7 +104,7 @@ const FilterPanel = ({
                 aria-controls="slider"
                 id="slider"
               >
-                <p className="label">Recommended Time</p>
+                <p className="label">Time</p>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="input-group">
