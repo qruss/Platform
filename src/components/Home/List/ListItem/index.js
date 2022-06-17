@@ -40,13 +40,13 @@ const theme = createTheme({
   },
 });
 
-function ListItem({ item: { title, skill, language } }) {
+function ListItem({ item: { Name, Technology, Languages } }) {
   function myFunction() {
     window.location.href = "https://www.youtube.com/";
   }
   return (
     <div onClick={myFunction} className="listItem-wrap">
-      <h1>{title}</h1>
+      <h1>{Name}</h1>
       <ThemeProvider theme={theme}>
         <div className="button">
           <Button variant="outlined" color="secondary" size="small">
@@ -56,10 +56,10 @@ function ListItem({ item: { title, skill, language } }) {
       </ThemeProvider>
       <footer>
         <p>
-          Skill : <span>{skill} </span>
+          Skill : <span>{Technology} </span>
         </p>
         <p className="language">
-          Language : <span>{language}</span>
+          Language : <span>{Languages}</span>
         </p>
       </footer>
     </div>
