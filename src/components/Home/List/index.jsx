@@ -4,8 +4,8 @@ import "./styles.css";
 
 const List = ({ list }) => (
   <div className="list-wrap">
-    {list.map((item) => (
-      <ListItem key={item.id} item={item} />
+    {list.map((item, index) => (
+      <ListItem key={index} item={item} />
     ))}
   </div>
 );

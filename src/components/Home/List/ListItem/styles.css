@@ -1,15 +1,20 @@
 .listItem-wrap {
   position: relative;
-  display: inline-flex;
+  display: flex;
   background-color: rgb(255, 255, 255);
   border-radius: 7px;
   flex-direction: column;
-  flex: auto;
+  flex-wrap: wrap;
   color: rgb(55 65 81);
   padding: 0.6rem;
   font-family: open Sans sans-serif;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
   cursor: pointer;
+  text-decoration: none !important;
+}
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .button {
@@ -27,38 +32,43 @@
   color: #9603ff !important;
 }
 
-.listItem-wrap h1:hover {
-  text-decoration: underline;
-}
-
 h1 {
+  width: auto;
+  display: inline;
   float: left;
   margin: 0rem 0 1.5rem 0;
   align-items: center;
-  font-size: 23px;
+  font-size: 1.5rem;
   font-family: open Sans sans-serif;
   border-radius: 10px;
 }
 
 .listItem-wrap footer {
-  font-size: 1rem;
+  font-size: 1.2rem;
   display: flex;
+  line-height: 80%;
   color: rgb(55 65 81);
-  flex-direction: column;
+  flex-direction: row;
   font-family: open Sans sans-serif;
-  justify-content: start;
+  justify-content: center;
+}
+.listItem-wrap footer p:first-child {
+  width: 45%;
 }
 
-.listItem-wrap footer p:first-child span {
-  color: #a25b5b;
-  font-weight: 300;
-  text-decoration: none !important;
-}
 .language {
-  margin-top: 0.2rem;
-  font-weight: 300;
+  width: 50%;
+  height: auto;
+  font-weight: 400;
   text-decoration: none !important;
 }
+.technology {
+  margin-left: 2%;
+  height: auto;
+  font-weight: 400;
+  text-decoration: none !important;
+}
+
 .language span {
   color: #a25b5b;
   text-decoration: none !important;

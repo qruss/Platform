@@ -19,6 +19,13 @@
   flex-basis: 280px;
   padding: 1rem;
 }
+
+@media only screen and (max-width: 1200px) {
+  .home_panel-wrap {
+    display: none !important;
+  }
+}
+
 .home_list-wrap {
   background: #eee;
   flex: 1;

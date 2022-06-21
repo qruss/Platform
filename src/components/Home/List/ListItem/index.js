@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import {
   createTheme,
@@ -40,29 +41,39 @@ const theme = createTheme({
   },
 });
 
-function ListItem({ item: { Name, Technology, Languages } }) {
-  function myFunction() {
-    window.location.href = "https://www.youtube.com/";
-  }
+function ListItem({
+  item: { _id, Name, Technology, Languages, Recommended_Time, Score },
+}) {
   return (
-    <div onClick={myFunction} className="listItem-wrap">
-      <h1>{Name}</h1>
-      <ThemeProvider theme={theme}>
-        <div className="button">
+    <Link to={`/id/${_id}`}>
+      <div className="listItem-wrap">
+        <h1>{Name}</h1>
+        <ThemeProvider theme={theme}>
+          {/*<div className="button">
           <Button variant="outlined" color="secondary" size="small">
             Solve Problem
           </Button>
-        </div>
-      </ThemeProvider>
-      <footer>
-        <p>
-          Skill : <span>{Technology} </span>
-        </p>
-        <p className="language">
-          Language : <span>{Languages}</span>
-        </p>
-      </footer>
-    </div>
+        </div>*/}
+        </ThemeProvider>
+        <footer>
+          <p className="language">
+            Time : <span>{Recommended_Time}</span>
+          </p>
+
+          <p className="language">
+            Language : <span>{Languages}</span>
+          </p>
+          <p className="language">
+            Score : <span>{Score}</span>
+          </p>
+        </footer>
+        <footer>
+          <p className="technology">
+            Technology : <span>{Technology} </span>
+          </p>
+        </footer>
+      </div>
+    </Link>
   );
 }
 

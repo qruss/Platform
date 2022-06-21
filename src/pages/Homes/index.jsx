@@ -18,14 +18,16 @@ const Home = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/master_api/ ")
+    const abortCont = new AbortController();
+
+    fetch("http://localhost:5000/master_api/ ", { signal: abortCont.signal })
       .then((response) => response.json())
       .then((data) => setmasterData(data));
+    return () => abortCont.abort();
   }, []);
 
   const [prob, setprob] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  const [count, setcount] = useState(null);
   const [filter, setfilter] = useState({
     Type: ["code"],
     Technology: [],
@@ -51,6 +53,11 @@ const Home = () => {
       );
       temp_filter["Search"] = searchInput;
       temp_filter["page"] = 1;
+      if (prob != null) {
+        const temp_prob = { ...prob };
+        temp_prob.pagination.count = null;
+        prob !== null && setprob(temp_prob);
+      }
       setfilter(temp_filter);
     };
     applyFilters();
@@ -65,6 +72,11 @@ const Home = () => {
     const temp_filter = { ...filter };
     temp_filter["Recommended_Time"] = value;
     temp_filter["page"] = 1;
+    if (prob != null) {
+      const temp_prob = { ...prob };
+      temp_prob.pagination.count = null;
+      prob !== null && setprob(temp_prob);
+    }
     setfilter(temp_filter);
   };
 
@@ -91,6 +103,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const abortCont = new AbortController();
     let url = `http://localhost:5000/get_questions_api?`;
     Object.keys(filter).map(
       (key) =>
@@ -110,23 +123,16 @@ const Home = () => {
     url += "&Recommended_Time=";
     url += filter["Recommended_Time"][0] + "," + filter["Recommended_Time"][1];
 
-    filter["page"] > 1 &&
-      (url += "&count=" + count) &&
-      (url += "&page=" + filter["page"]);
+    url += "&count=" + (!prob ? null : prob.pagination.count);
+    url += "&page=" + filter["page"];
 
     url = encodeURI(url);
     console.log(url);
-    fetch(url)
+
+    fetch(url, { signal: abortCont.signal })
       .then((response) => response.json())
       .then((data) => setprob(data));
-    if (prob !== null) {
-      setcount(prob["pagination"]["count"]);
-    }
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    return () => abortCont.abort();
   }, [filter]);
 
   return (
