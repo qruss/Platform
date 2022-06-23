@@ -45,33 +45,27 @@ function ListItem({
   item: { _id, Name, Technology, Languages, Recommended_Time, Score },
 }) {
   return (
-    <Link to={`/id/${_id}`}>
+    <Link to={`/id/${_id}`} target="_blank" rel="noopener noreferrer">
       <div className="listItem-wrap">
         <h1>{Name}</h1>
-        <ThemeProvider theme={theme}>
-          {/*<div className="button">
-          <Button variant="outlined" color="secondary" size="small">
-            Solve Problem
-          </Button>
-        </div>*/}
-        </ThemeProvider>
-        <footer>
-          <p className="language">
-            Time : <span>{Recommended_Time}</span>
-          </p>
-
-          <p className="language">
-            Language : <span>{Languages}</span>
-          </p>
-          <p className="language">
-            Score : <span>{Score}</span>
-          </p>
-        </footer>
-        <footer>
-          <p className="technology">
-            Technology : <span>{Technology} </span>
-          </p>
-        </footer>
+        <div className="footer">
+          <div className="left">
+            <p className="language">
+              Language : <span>{Languages}</span>
+            </p>
+            <p className="technology">
+              Technology : <span>{Technology} </span>
+            </p>
+          </div>
+          <div className="wrap_number">
+            <p className="number">
+              Score : <span>{Score}</span>
+            </p>
+            <p className="number">
+              Time : <span> {Recommended_Time}</span>
+            </p>
+          </div>
+        </div>
       </div>
     </Link>
   );
