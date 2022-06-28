@@ -4,18 +4,16 @@
   background-color: rgb(255, 255, 255);
   border-radius: 7px;
   flex-direction: column;
-  height: fit-content;
   color: rgb(55 65 81);
   padding: 0.6rem;
-  padding-bottom: 2rem;
-  font-family: open Sans sans-serif;
-  box-shadow: 0 1px 5px rgb(138, 137, 137);
+
+  box-shadow: 5px 3px 5px rgb(46, 45, 45);
   cursor: pointer;
   text-decoration: none !important;
 }
 
 .listItem-wrap:hover {
-  background-color: #f2f1f1;
+  background-color: #fbfbfb;
   transform: scale(1.03);
   transition: transform 0.2s;
   color: #9603ff !important;
@@ -29,55 +27,46 @@ h1 {
   width: auto;
   display: inline;
   float: left;
-  margin: 0rem 0 1.5rem 0;
+  margin: 0rem 0 0.7rem 0;
   align-items: center;
-  font-size: 1.6rem;
-  font-family: open Sans sans-serif;
+  font-size: 23px;
   border-radius: 10px;
 }
 
 .left {
   width: 80%;
-  height: fit-content;
-}
-
-.wrap_number {
-  height: fit-content;
 }
 
 .footer {
-  font-size: 1.25rem;
+  font-size: 20px;
   display: flex;
   height: auto;
-  line-height: 30px;
+  line-height: 35px;
   color: rgb(55 65 81);
   flex-direction: row;
-  font-family: open Sans sans-serif;
 }
 
 .language {
-  height: auto;
-  font-weight: 400;
+  font-weight: 550;
   text-decoration: none !important;
 }
 
 .language span {
-  margin: 0px 10px 10px 17px;
+  margin: 0px 0px 10px 7px;
   padding: 0px 5px 0px 9px;
   font-weight: 550 !important;
   border: 1px solid #e8d7ef;
-  background-color: #e8d7ef;
+  background-color: #e3ccec;
   border-radius: 5px;
-  font-size: 1.27rem;
+  font-size: 19px;
   color: rgb(55, 65, 81);
-  font-family: open Sans sans-serif;
   box-shadow: 0 1px 1px rgb(138, 137, 137);
   width: auto;
 }
 
 .number {
   height: auto;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .number span {
@@ -87,11 +76,12 @@ h1 {
   border: 1px solid #e8d7ef;
 
   border-radius: 5px;
-  font-size: 1.27rem;
+  font-size: 19px;
   color: rgb(55, 65, 81);
-  font-family: open Sans sans-serif;
   box-shadow: 0 1px 1px rgb(138, 137, 137);
+
   width: auto;
+  position: relative;
 }
 .time {
   margin-right: 0;
@@ -99,7 +89,7 @@ h1 {
 
 .technology {
   height: auto;
-  font-weight: 400;
+  font-weight: 500;
   text-decoration: none !important;
 }
 
@@ -108,12 +98,12 @@ h1 {
   padding: 0px 5px 0px 9px;
   font-weight: 550 !important;
   border: 1px solid #e8d7ef;
-  background-color: #e8d7ef;
+  background-color: #e3ccec;
   border-radius: 5px;
-  font-size: 1.27rem;
+  font-size: 19px;
   color: rgb(55, 65, 81);
-  font-family: open Sans sans-serif;
   box-shadow: 0 1px 1px rgb(138, 137, 137);
+  height: 1.5rem;
   width: auto;
   position: relative;
 }

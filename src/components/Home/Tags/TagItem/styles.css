@@ -1,16 +1,15 @@
 .TagItem {
   display: flex;
   margin: 0px 10px 10px 0px;
-  padding: 0px 5px 0px 9px;
+  padding: 0px 5px 2px 9px;
   font-weight: 550 !important;
   border: 1px solid #e8d7ef;
-  background-color: #e8d7ef;
+  background-color: #dbc0e5;
   border-radius: 5px;
-  font-size: 1.23rem;
+  font-size: 18px;
   color: rgb(55, 65, 81);
-  font-family: open Sans sans-serif;
   box-shadow: 0 1px 1px rgb(138, 137, 137);
-  height: 1.5rem;
+  height: 28px;
   width: auto;
   position: relative;
 }

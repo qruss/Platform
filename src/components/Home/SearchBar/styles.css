@@ -7,16 +7,15 @@
   padding: 1.5rem 12rem;
 }
 .searchBar-icon {
-  color: rgba(11, 34, 188, 0.26);
+  color: rgba(11, 34, 188, 0.7);
 }
 
 .searchBar-wrap input {
   font-size: 1.5rem;
-  color: #9112b5;
   outline: none;
   border: none;
 }
 
 .searchBar-wrap input::placeholder {
-  color: rgba(9, 7, 7, 0.26);
+  color: rgb(0, 0, 0);
 }

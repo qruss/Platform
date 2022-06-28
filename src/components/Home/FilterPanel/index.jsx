@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { CheckboxProton } from "../../common/CheckboxProton";
+import { CheckboxProton } from "./CheckboxProton";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";

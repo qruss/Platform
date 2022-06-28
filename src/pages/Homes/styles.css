@@ -15,19 +15,25 @@
 }
 
 .home_panel-wrap {
-  background-color: rgb(255, 255, 255);
+  position: relative;
+  background-color: #c8c5c5;
+  background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   flex-basis: 280px;
+  box-shadow: 2px 2px 2px 2px #717171;
   padding: 1rem;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 800px) {
   .home_panel-wrap {
     display: none !important;
   }
 }
 
 .home_list-wrap {
-  background: #eee;
+  background-color: #e7e6e6;
+  background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   flex: 1;
   padding: 1rem;
 }

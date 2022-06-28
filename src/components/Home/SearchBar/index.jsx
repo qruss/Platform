@@ -7,7 +7,7 @@ import "./styles.css";
 const SearchBar = ({ value, changeInput }) => (
   <div className="searchBar-wrap">
     <SearchIcon className="searchBar-icon" />
-    <FormControl sx={{ backgroundColor: "#eee" }}>
+    <FormControl sx={{ backgroundColor: "#cccaca" }}>
       <OutlinedInput
         type="text"
         onChange={changeInput}

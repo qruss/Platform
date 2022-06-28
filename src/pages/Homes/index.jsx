@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pagination } from "@mui/material";
+import PaginationComp from "../../components/Home/Pagination/index";
 import FilterPanel from "../../components/Home/FilterPanel";
 import EmptyView from "../../components/common/EmptyView";
 import SearchBar from "../../components/Home/SearchBar";
@@ -104,7 +104,7 @@ const Home = () => {
 
   useEffect(() => {
     const abortCont = new AbortController();
-    let url = `http://localhost:5000/get_questions_api?`;
+    let url = `http://localhost:5000/question?`;
     Object.keys(filter).map(
       (key) =>
         key !== "Search" &&
@@ -160,13 +160,10 @@ const Home = () => {
           )}
           {prob !== null && prob["questions"].length !== 0 && (
             <div className="Pagination">
-              <Pagination
+              <PaginationComp
                 count={Math.ceil(prob["pagination"]["count"] / 30)}
-                variant="outlined"
-                color="secondary"
-                size="large"
                 page={filter["page"]}
-                onChange={handlePageChange}
+                handlePageChange={handlePageChange}
               />
             </div>
           )}

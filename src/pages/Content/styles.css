@@ -1,17 +1,52 @@
-.chart1 {
-  width: 60%;
-  height: 250px;
-  margin: 50px 0 0 50px;
+.Cont_Head_total {
+  position: relative;
+  display: flex;
+  border-radius: 7px;
+  flex-direction: column;
+  height: fit-content;
+  color: rgb(55 65 81);
+  padding: 0.6rem;
+  padding-bottom: 2rem;
+  background-color: #949392;
+  background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
 }
 
-.chart2 {
-  width: 60%;
-  height: 250px;
-  margin: 50px 0 0 50px;
+.Cont_Head_Title {
+  align-items: center;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.chart1 {
+  position: relative;
+  display: flex;
+  background-color: white;
+  border-radius: 7px;
+  flex-direction: column;
+  padding: 2.5rem 2rem 3rem 2rem;
+  box-shadow: 5px 5px 5px rgb(78, 77, 77);
+  margin: 1rem 5rem 1rem 5rem;
+}
+.innerChart1 {
+  width: 75%;
+  height: 300px;
+  margin: 10px 0 0 50px;
+}
+.innerChart2 {
+  width: 90%;
+  height: 300px;
+  margin: 10px 0 0 50px;
 }
 
 .piechart {
-  width: 60%;
+  width: 70%;
   height: 500px;
+  background-color: white;
+  margin: 10px 0 50px 150px;
+}
+.table {
+  background-color: white;
   margin: 50px 0 50px 50px;
 }

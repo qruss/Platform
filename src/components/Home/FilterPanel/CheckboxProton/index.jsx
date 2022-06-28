@@ -25,9 +25,9 @@ const theme = createTheme({
           },
         }),
         label: sx({
-          fontSize: "16px",
+          fontSize: "16.5px",
           borderRadius: "7px",
-          fontWeight: "360",
+          fontWeight: "450",
           fontFamily: `'Open Sans', sans-serif`,
           color: "rgb(55,65,81)",
 

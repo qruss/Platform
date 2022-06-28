@@ -3,10 +3,12 @@
 }
 
 .title {
-  color: black;
-  -webkit-text-fill-color: #eee; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1.5px;
-  -webkit-text-stroke-color: #aa30db;
+  -webkit-text-fill-color: rgb(
+    75,
+    80,
+    86
+  ); /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0px;
   margin-top: 25px;
   margin-left: 50px;
   margin-right: 50px;
@@ -27,8 +29,9 @@
 }
 
 .label {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgb(55 65 81);
   font-family: open Sans sans-serif;
 }
 .input-group {
