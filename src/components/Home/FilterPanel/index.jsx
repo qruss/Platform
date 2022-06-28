@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { CheckboxProton } from "./CheckboxProton";
+import { CheckboxProton } from "../FilterPanel/CheckboxProton/index";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SliderProton from "../../common/SliderProton/index";
+import SliderProton from "../FilterPanel/SliderProton/index";
 
 import {
   createTheme,
