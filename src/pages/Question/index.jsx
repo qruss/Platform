@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import PaginationComp from "../../components/Question/Pagination/index";
 import FilterPanel from "../../components/Question/FilterPanel";
 import EmptyView from "../../components/common/EmptyView";
-import SearchBar from "../../components/Question/SearchBar";
+import SearchBar from "../../components/common/SearchBar";
 import List from "../../components/Question/List";
-import Tags from "../../components/Question/Tags/index";
+import Tags from "../../components/Question/Tags";
 import "./styles.css";
 
 const Question = () => {

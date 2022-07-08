@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import FilterPanel from "../../components/Test/FilterPanel";
 import EmptyView from "../../components/common/EmptyView/index";
-import SearchBar from "../../components/Question/SearchBar/index";
+import SearchBar from "../../components/common/SearchBar/index";
 import List from "../../components/Test/List/index";
-import PaginationComp from "../../components/Question/Pagination/index";
+import PaginationComp from "../../components/common/Pagination/index";
 import Tags from "../../components/Test/Tags/index";
 
 import "./styles.css";
