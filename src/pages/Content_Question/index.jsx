@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Barchart from "../../components/content/barchart";
-import Barchart1 from "../../components/content/barchart1";
-import Piechart from "../../components/content/piechart";
-import EnhancedTable from "../../components/content/table";
-import Conthead from "../../components/content/header/index";
+import Barchart from "../../components/content_Question/barchart";
+import Barchart1 from "../../components/content_Question/barchart1";
+import Piechart from "../../components/content_Question/piechart";
+import EnhancedTable from "../../components/content_Question/table";
+import Conthead from "../../components/content_Question/header/index";
 
 import "./styles.css";
 

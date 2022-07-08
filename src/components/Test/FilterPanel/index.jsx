@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
-import { CheckboxProton } from "../FilterPanel/CheckboxProton/index";
+import { CheckboxProton } from "../../common/CheckboxProton/index";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SliderProton from "../FilterPanel/SliderProton/index";
+import DateFilter from "./DatePicker";
 
 import {
   createTheme,
@@ -62,7 +62,7 @@ const FilterPanel = ({
   masterData,
   changeChecked,
   value,
-  handleRecommended_Time,
+  handleTest_Creation_Date,
 }) => {
   return (
     <ThemeProvider theme={theme}>
@@ -71,7 +71,7 @@ const FilterPanel = ({
         <div className="FilterPanel">
           {Object.keys(masterData).map(
             (name, index) =>
-              name !== "Recommended_Time" && (
+              name !== "Test_Creation_Date" && (
                 <div className="Accordion" key={index}>
                   <Accordion>
                     <AccordionSummary
@@ -79,7 +79,13 @@ const FilterPanel = ({
                       aria-controls={name}
                       id={name}
                     >
-                      <p className="label">{name}</p>
+                      <p className="label">
+                        {name === "Test_Type"
+                          ? "Test Type"
+                          : name === "Module_Type"
+                          ? "Module Type"
+                          : "Technology"}
+                      </p>
                     </AccordionSummary>
                     <AccordionDetails>
                       <div className="input-group">
@@ -97,21 +103,18 @@ const FilterPanel = ({
                 </div>
               )
           )}
+
           <div className="Accordion">
             <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="slider"
-                id="slider"
-              >
-                <p className="label">Time</p>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <p className="label">Creation Date</p>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="input-group">
-                  <SliderProton
-                    changeTime={handleRecommended_Time}
-                    masterData={masterData}
+                  <DateFilter
+                    Date_Range={masterData.Test_Creation_Date}
                     value={value}
+                    handleTest_Creation_Date={handleTest_Creation_Date}
                   />
                 </div>
               </AccordionDetails>

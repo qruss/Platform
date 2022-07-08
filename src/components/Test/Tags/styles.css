@@ -1,0 +1,24 @@
+.Tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0.7rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.6rem;
+}
+
+.Wrap {
+  font-size: 18px;
+  font-weight: 600 !important;
+  color: rgb(55, 65, 81) !important;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: auto;
+  margin-right: 1rem;
+}
+
+.Title {
+  color: black;
+  padding-top: 0.5px;
+  margin-right: 0.5rem;
+}

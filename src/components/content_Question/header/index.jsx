@@ -35,10 +35,12 @@ const Conthead = ({ cont }) => {
           Total Score : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
           <span>{cont["info"]["Total_Score"]} </span>
         </p>
-        <p className="Cont_Head_para">
-          Recommended Time : &emsp;&emsp;&nbsp;
-          <span>{cont["info"]["Recommended_Time"]} </span>
-        </p>
+        {cont.info.Type === "code" && (
+          <p className="Cont_Head_para">
+            Recommended Time : &emsp;&emsp;&nbsp;
+            <span>{cont["info"]["Recommended_Time"]} </span>
+          </p>
+        )}
       </div>
       <div className="right_side">
         <p className="Cont_Header_Title">Stats</p>
@@ -58,10 +60,12 @@ const Conthead = ({ cont }) => {
           Average Score : &emsp;&emsp;&emsp; &emsp; &emsp;
           <span>{cont["info"]["Average_Score"]} </span>
         </p>
-        <p className="Cont_Head_para">
-          Median Attempt Time : &emsp;&emsp;
-          <span>{cont["info"]["Median_Attempt_Time"]} </span>
-        </p>
+        {cont.info.Type === "code" && (
+          <p className="Cont_Head_para">
+            Median Attempt Time : &emsp;&emsp;
+            <span>{cont["info"]["Median_Attempt_Time"]} </span>
+          </p>
+        )}
       </div>
     </div>
   );

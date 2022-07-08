@@ -1,174 +1,32 @@
-import React, { useEffect, useState } from "react";
-import PaginationComp from "../../components/Home/Pagination/index";
-import FilterPanel from "../../components/Home/FilterPanel";
-import EmptyView from "../../components/common/EmptyView";
-import SearchBar from "../../components/Home/SearchBar";
-import List from "../../components/Home/List";
-import Tags from "../../components/Home/Tags/index";
+import React from "react";
 import "./styles.css";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Question from "../Question/index";
+import Test from "../Test/index";
 
 const Home = () => {
-  const [masterData, setmasterData] = useState({
-    Technology: [],
-    Level: [],
-    Type: [],
-    Recommended_Time: [],
-    Tags: [],
-    Languages: [],
-  });
+  const [value, setValue] = React.useState(0);
 
-  useEffect(() => {
-    const abortCont = new AbortController();
-
-    fetch("http://localhost:5000/master_api/ ", { signal: abortCont.signal })
-      .then((response) => response.json())
-      .then((data) => setmasterData(data));
-    return () => abortCont.abort();
-  }, []);
-
-  const [prob, setprob] = useState(null);
-  const [searchInput, setSearchInput] = useState("");
-  const [filter, setfilter] = useState({
-    Type: ["code"],
-    Technology: [],
-    Level: [],
-    Recommended_Time: [0, 600],
-    Tags: [],
-    Languages: [],
-    Search: "",
-    page: 1,
-  });
-
-  useEffect(() => {
-    const applyFilters = () => {
-      const temp_filter = { ...filter };
-      Object.keys(temp_filter).map(
-        (key) =>
-          (temp_filter[key] =
-            key === "Search" || key === "Recommended_Time" || key === "page"
-              ? temp_filter[key]
-              : masterData[key]
-                  .filter((item) => item.selected)
-                  .map((item) => item.label))
-      );
-      temp_filter["Search"] = searchInput;
-      temp_filter["page"] = 1;
-      if (prob != null) {
-        const temp_prob = { ...prob };
-        temp_prob.pagination.count = null;
-        prob !== null && setprob(temp_prob);
-      }
-      setfilter(temp_filter);
-    };
-    applyFilters();
-  }, [masterData, searchInput]);
-
-  const handlePageChange = (event, value) => {
-    const temp_filter = { ...filter };
-    temp_filter.page = value;
-    setfilter(temp_filter);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
-  const handleRecommended_Time = (event, value) => {
-    const temp_filter = { ...filter };
-    temp_filter["Recommended_Time"] = value;
-    temp_filter["page"] = 1;
-    if (prob != null) {
-      const temp_prob = { ...prob };
-      temp_prob.pagination.count = null;
-      prob !== null && setprob(temp_prob);
-    }
-    setfilter(temp_filter);
-  };
-
-  const handleChange = (category, id) => {
-    const temp_masterData = { ...masterData };
-    category === "Type"
-      ? (temp_masterData[category] = temp_masterData[category].map((item) =>
-          item.id === id
-            ? { ...item, selected: true }
-            : { ...item, selected: false }
-        ))
-      : (temp_masterData[category] = temp_masterData[category].map((item) =>
-          item.id === id ? { ...item, selected: !item.selected } : item
-        ));
-
-    setmasterData(temp_masterData);
-  };
-  const handleTag = (category, label) => {
-    const temp_masterData = { ...masterData };
-    temp_masterData[category] = temp_masterData[category].map((item) =>
-      item.label === label ? { ...item, selected: false } : item
-    );
-    setmasterData(temp_masterData);
-  };
-
-  useEffect(() => {
-    const abortCont = new AbortController();
-    let url = `http://localhost:5000/question?`;
-    Object.keys(filter).map(
-      (key) =>
-        key !== "Search" &&
-        key !== "Recommended_Time" &&
-        key !== "page" &&
-        filter[key].length &&
-        ((url += "&" + key + "="),
-        filter[key].map((item) => (url += item + ",")),
-        (url = url.substring(0, url.length - 1)))
-    );
-
-    if (filter["Search"].length) {
-      url += "&Name=";
-      url += filter["Search"];
-    }
-    url += "&Recommended_Time=";
-    url += filter["Recommended_Time"][0] + "," + filter["Recommended_Time"][1];
-
-    url += "&count=" + (!prob ? null : prob.pagination.count);
-    url += "&page=" + filter["page"];
-
-    url = encodeURI(url);
-    console.log(url);
-
-    fetch(url, { signal: abortCont.signal })
-      .then((response) => response.json())
-      .then((data) => setprob(data));
-    return () => abortCont.abort();
-  }, [filter]);
-
   return (
     <div className="home">
-      <div className="home_panelList-wrap">
-        <div className="home_panel-wrap">
-          <FilterPanel
-            masterData={masterData}
-            changeChecked={handleChange}
-            value={filter["Recommended_Time"]}
-            handleRecommended_Time={handleRecommended_Time}
-          />
-        </div>
-        <div className="home_list-wrap">
-          <SearchBar
-            value={searchInput}
-            changeInput={(e) => setSearchInput(e.target.value)}
-          />
-
-          <Tags filter={filter} handleTag={handleTag} />
-          {prob !== null && prob["questions"].length !== 0 ? (
-            <List list={prob["questions"]} />
-          ) : (
-            <EmptyView />
-          )}
-          {prob !== null && prob["questions"].length !== 0 && (
-            <div className="Pagination">
-              <PaginationComp
-                count={Math.ceil(prob["pagination"]["count"] / 30)}
-                page={filter["page"]}
-                handlePageChange={handlePageChange}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+      <Box sx={{ width: "100%" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          textColor="secondary"
+          indicatorColor="secondary"
+          centered
+        >
+          <Tab label="Question" />
+          <Tab sx={{ width: "150px" }} label="Test" />
+        </Tabs>
+      </Box>
+      {value === 0 ? <Question /> : <Test />}
     </div>
   );
 };

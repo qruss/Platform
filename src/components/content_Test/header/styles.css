@@ -1,0 +1,41 @@
+.Cont_Header1 {
+  position: relative;
+  display: flex;
+  border-radius: 7px;
+  flex-direction: row;
+  background-color: white;
+  height: fit-content;
+  padding: 1.2rem 2rem 2rem 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 5px 5px 5px rgb(78, 77, 77);
+  margin: 5rem;
+  margin-bottom: 1rem;
+}
+.Cont_Header_Title1 {
+  align-items: center;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  padding-bottom: 1.6rem;
+}
+.Cont_Head_para1 {
+  align-items: center;
+  font-size: 17px;
+  font-weight: 550;
+}
+
+.left_side1 {
+  width: 50%;
+}
+.innerleft_side1 {
+  width: 25%;
+}
+
+.right_side1 {
+}
+
+span {
+  color: rgb(117, 113, 113);
+  font-size: 15px;
+  font-weight: 400;
+}

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function ListItem({
   item: { _id, Name, Technology, Type, Languages, Recommended_Time, Score },
 }) {
-  console.log(Languages);
   return (
     <Link to={`/question/${_id}`} target="_blank" rel="noopener noreferrer">
       <div className="listItem-wrap">
