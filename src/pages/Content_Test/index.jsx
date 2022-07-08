@@ -44,9 +44,7 @@ const Content = () => {
             </div>
           </div>
           <div className="chart11">
-            <p className="Cont_Head_Title1">
-              Median Score Per Question (Seconds)
-            </p>
+            <p className="Cont_Head_Title1">Median Score Per Question</p>
             <div className="innerChart12">
               <Barchart3 data1={cont["median_score_per_question"]} />
             </div>
