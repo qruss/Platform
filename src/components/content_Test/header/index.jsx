@@ -35,7 +35,7 @@ const Conthead = ({ cont }) => {
       <div className="right_side1">
         <p className="Cont_Header_Title1">Stats</p>
         <p className="Cont_Head_para">
-          Duration : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+          Duration : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
           <span>{cont["info"]["Duration"]} min</span>
         </p>
         <p className="Cont_Head_para1">

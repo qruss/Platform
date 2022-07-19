@@ -21,6 +21,9 @@ ChartJS.register(
 
 const options = {
   responsive: true,
+  onHover: (event, chartElement) => {
+    event.native.target.style.cursor = chartElement[0] ? "pointer" : "default";
+  },
   plugins: {
     legend: {
       display: false,
@@ -84,7 +87,7 @@ const options = {
 
 const Barchart1 = ({ data1 }) => {
   const data = {
-    labels: data1["time"],
+    labels: data1["year"],
     datasets: [
       {
         barPercentage: 0.8,
@@ -93,7 +96,28 @@ const Barchart1 = ({ data1 }) => {
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  const clickhandler = () => {
+    console.log("clicked");
+  };
+
+  return <Bar onClick={clickhandler} options={options} data={data} />;
 };
+/*
+const Barchart1 = ({ data, handleClick }) => {
+  const chartRef = useRef(null);
+
+  const clickhandler = (event) => {
+    const { current: chart } = chartRef;
+    const barv = getElementAtEvent(chart, event);
+    if (barv.length != 0) {
+      handleClick(barv[0].index);
+    }
+  };
+  console.log(data);
+  return (
+    <Bar onClick={clickhandler} ref={chartRef} options={options} data={data} />
+  );
+};
+*/
 
 export default Barchart1;

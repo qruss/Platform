@@ -94,7 +94,6 @@ const Barchart2 = ({ data1 }) => {
       },
     ],
   };
-
   return <Bar height={data1["id"].length * 20} options={options} data={data} />;
 };
 
